@@ -1,0 +1,5 @@
+{
+	"tasks": {
+		"test": "deno test --allow-write --allow-run lsp_test.ts"
+	}
+}
