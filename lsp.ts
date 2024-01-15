@@ -1,19 +1,12 @@
-import { logger } from "./logger.ts";
-import * as LSP from "npm:vscode-languageserver-protocol";
-import * as LSPTypes from "npm:vscode-languageserver-types";
+import { LspDecoderStream, LspEncoderStream } from "./lsp_stream.ts";
 
 function main() {
-  const decoder = new TextDecoder("utf-8");
-
   Deno.stdin.readable
     .pipeThrough(
-      new TransformStream({
-        transform(chunk, controller) {
-          // logger().info(chunk);
-          logger().info(decoder.decode(chunk));
-          controller.enqueue(chunk);
-        },
-      }),
+      new LspDecoderStream(),
+    )
+    .pipeThrough(
+      new LspEncoderStream(),
     )
     .pipeTo(Deno.stdout.writable);
 }
