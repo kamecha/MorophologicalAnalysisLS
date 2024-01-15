@@ -2,7 +2,7 @@ import { assertEquals } from "https://deno.land/std@0.212.0/assert/assert_equals
 // import * as LSPTypes from "npm:vscode-languageserver-types";
 import * as LSP from "npm:vscode-languageserver-protocol";
 
-Deno.test("Initialize LSP", async (t) => {
+Deno.test("Initialize LSP", { permissions: { write: true, run: true } }, async (t) => {
   const requestContent = {
     jsonrpc: "2.0",
     id: 0,
