@@ -46,9 +46,9 @@ export class LspDecoderStream extends TransformStream<
             // contentをLSP.RequestMessage | LSP.NotificationMessageに変換
             const contentObj = JSON.parse(content);
             controller.enqueue(contentObj as LSP.RequestMessage);
-            // controller.enqueue(content);
             // #bufferをcontentの分だけ削除
             this.#buffer = this.#buffer.slice(this.#header.length);
+            this.#header = undefined;
           }
         }
       },
