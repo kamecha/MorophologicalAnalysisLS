@@ -7,7 +7,7 @@ type LSPHeader = {
 
 export class LspDecoderStream extends TransformStream<
   Uint8Array,
-  LSP.RequestMessage | LSP.NotificationMessage
+  LSP.RequestMessage
 > {
   #buffer = new Uint8Array();
   #header: LSPHeader = {
@@ -46,11 +46,7 @@ export class LspDecoderStream extends TransformStream<
             );
             // contentをLSP.RequestMessage | LSP.NotificationMessageに変換
             const contentObj = JSON.parse(content);
-            if (contentObj.id === undefined) {
-              controller.enqueue(contentObj as LSP.NotificationMessage);
-            } else {
-              controller.enqueue(contentObj as LSP.RequestMessage);
-            }
+            controller.enqueue(contentObj as LSP.RequestMessage);
             // controller.enqueue(content);
             // #bufferをcontentの分だけ削除
             this.#buffer = this.#buffer.slice(this.#header.length);
@@ -63,7 +59,7 @@ export class LspDecoderStream extends TransformStream<
 }
 
 export class LspEncoderStream extends TransformStream<
-  LSP.ResponseMessage | LSP.NotificationMessage,
+  LSP.ResponseMessage,
   Uint8Array
 > {
   constructor() {
