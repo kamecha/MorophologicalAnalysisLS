@@ -1,4 +1,3 @@
-import { logger } from "./logger.ts";
 import * as LSP from "npm:vscode-languageserver-protocol";
 
 type LSPHeader = {
