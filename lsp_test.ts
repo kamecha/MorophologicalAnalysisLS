@@ -19,16 +19,13 @@ Deno.test(
       id: 0,
       result: {
         capabilities: {},
-        serverInfo: {
-          name: "user",
-        },
       },
     };
     const command = new Deno.Command("deno", {
       args: [
         "run",
         "--allow-write",
-        "lsp.ts",
+        "main.ts",
       ],
       stdin: "piped",
       stdout: "piped",
