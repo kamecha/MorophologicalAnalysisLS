@@ -23,7 +23,7 @@ Deno.test(
       args: [
         "run",
         "--allow-write",
-        "main.ts",
+        "src/main.ts",
       ],
       stdin: "piped",
       stdout: "piped",
