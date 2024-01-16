@@ -1,6 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.212.0/assert/assert_equals.ts";
-// import * as LSPTypes from "npm:vscode-languageserver-types";
-import * as LSP from "npm:vscode-languageserver-protocol";
+import { assertEquals, LSP } from "./deps.ts";
 
 Deno.test(
   "Initialize LSP",

@@ -1,4 +1,4 @@
-import * as log from "https://deno.land/std@0.209.0/log/mod.ts";
+import { log } from "./deps.ts";
 
 export function logger() {
   log.setup({

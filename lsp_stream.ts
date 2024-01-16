@@ -1,4 +1,4 @@
-import * as LSP from "npm:vscode-languageserver-protocol";
+import { LSP } from "./deps.ts";
 
 type LSPHeader = {
   length: number;
