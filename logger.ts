@@ -17,4 +17,3 @@ export function logger() {
   });
   return log.getLogger();
 }
-
